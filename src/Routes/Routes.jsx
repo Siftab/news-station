@@ -3,6 +3,8 @@ import MainLayOut from "../MainLayOut/MainLayOut";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import DetailsNews from "../Pages/DetailsNews";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const myRoutes=createBrowserRouter([
     {
@@ -31,7 +33,10 @@ export const myRoutes=createBrowserRouter([
             {
                 path:'/career',
                 element:<div>Career</div>
-            }
+            },
+            {
+                path:'/news/:id',
+                element:<PrivateRoutes><DetailsNews></DetailsNews></PrivateRoutes>}
         ]
     }
 ]);

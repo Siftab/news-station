@@ -1,12 +1,13 @@
 import  { useContext } from 'react';
 import NavBar from '../Components/NavBar';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {VscEye} from 'react-icons/vsc'
 import { useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
 const Login = () => {
+    const location= useLocation();console.log(location.state)
     const navigate=useNavigate();
     const {signIn}=useContext(AuthContext);
     const [visible,setVisible]=useState(true);
@@ -21,7 +22,7 @@ const Login = () => {
     console.log(email,password)
     signIn(email,password)
     .then(res=>{ console.log(res.user)
-                    navigate('/')})
+                    navigate(location?.state ? location.state:'/')})
     .catch(err=> console.log(err))
 
     
